@@ -60,3 +60,58 @@ class Queue:
         """
 
         return self.__size == self.__max_size
+
+
+class Node:
+
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class NQueue:
+    """
+    This class implement queue using linked list and nodes.
+    """
+
+    def __init__(self, front=None, tail=None):
+        self.__front = front
+        self.__tail = tail
+
+    def __repr__(self):
+        if self.is_empty():
+            return '[]'
+        s = '['
+        tmp = self.__front
+
+        while tmp is not None:
+            s += str(tmp.data) + ', '
+            tmp = tmp.next
+
+        return s[:-2] + ']'
+
+    def is_empty(self):
+        return self.__front is None
+
+    def enqueue(self, item):
+        new = Node(item)
+
+        if self.is_empty():
+            self.__front = self.__tail = new
+
+        else:
+            self.__tail.next = new
+            self.__tail = new
+
+    def dequeue(self):
+        if self.is_empty():
+            raise Exception('The queue is empty!')
+
+        else:
+            tmp = self.__front.data
+            self.__front = self.__front.next
+
+        if self.__front is None:
+            self.__tail = None
+
+        return tmp

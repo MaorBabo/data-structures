@@ -46,3 +46,5 @@ class BinarySearchTree:
         return _lookup(self.root, key)
 
 
+    def insert(self):
+        ...

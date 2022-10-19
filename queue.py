@@ -40,7 +40,6 @@ class Queue:
         if self.is_empty():
             raise Exception('The queue is empty!')
 
-        print(self.__queue[self.__front], 'is removed!')
         self.__front = int((self.__front + 1) % self.__max_size)
         self.__size -= 1
         # We don't actually remove the items but the items will be override.
